@@ -4,7 +4,7 @@ Created on Sun May 10 01:14:53 2015
 
 @author: Harsh Hemani
 
-REMEMBER: Google imposes a limit of 25k images per day.
+REMEMBER: Google imposes a limit of 25k images per day even if you use api key.
 
 ALL RIGHTS RESERVED.
 """
@@ -32,6 +32,8 @@ def get_googlemap_as_image(baseurl="http://maps.googleapis.com/maps/api/staticma
     url = url + '&' + 'zoom=' + zoom
     url = url + '&' + 'size=' + image_size
     url = url + '&' + 'maptype=' + maptype
+    # optionally you can add your static maps api key here
+    # url = url + '&' + 'key=' + api_key
     buffer = StringIO(urllib.urlopen(url).read())
     image = Image.open(buffer)
     return image
@@ -102,11 +104,4 @@ if __name__ == '__main__':
                                 start_location=[17.7302099,83.3204157], 
                                 zoom_lvl='20',
                                 save_dir='10052015')
-    """
-    download_googlemap_batch(n_images=4, 
-                                direction='longitude', 
-                                start_location=[28.5581510,77.1010040], 
-                                zoom_lvl='20',
-                                save_dir='10052015')
-    """
     print 'Done'
